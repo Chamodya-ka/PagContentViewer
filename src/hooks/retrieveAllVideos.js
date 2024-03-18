@@ -1,15 +1,29 @@
-import { useState } from "react";
+import { useEffect} from "react";
 
-export function RetrieveAllVideosList({directory=null}){
-    const [fileList,setFileList] = useState()
-    fetch("192.168.1.13:8081")
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            setFileList(data);
-        })
-        .catch((err) => {
-            console.log(err)
-        });
-    return fileList
+export function RetrieveAllVideosList(setFileList){
+    // TODO: add sub directories if needed
+    // const [fileList,setFileList] = useState([])
+
+    useEffect(()=> {fetchFileList()},[]);
+
+    const fetchFileList = async() => {
+        try {
+            // Make a GET request using the Fetch API
+            const response = await fetch('http://localhost:8081');
+            
+            // Check if the response is successful (status code 200-299)
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+      
+            // Parse the JSON data from the response
+            const result = await response.json();
+      
+            // Update the state with the fetched data
+            setFileList(JSON.parse(result));
+          } catch (error) {
+            console.error('Error fetching data:', error.message);
+          }
+        };
+      
 }

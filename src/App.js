@@ -4,6 +4,7 @@ import { BrowserRouter, Routes,Route } from 'react-router-dom';
 
 import { Home } from './Home';
 import { Hippo } from './priorityPages/Hippo';
+import {HipposVideos} from './randomVideoPages/hipposVideos'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         )}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/hippo" element={<Hippo/>}/>
+        <Route path="/hippo/videos" element={<HipposVideos/>}/>
 
       </Routes>
     </BrowserRouter>
