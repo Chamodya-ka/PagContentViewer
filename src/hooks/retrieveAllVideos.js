@@ -1,12 +1,5 @@
-import { useEffect} from "react";
-
-export function RetrieveAllVideosList(setFileList){
-    // TODO: add sub directories if needed
-    // const [fileList,setFileList] = useState([])
-
-    useEffect(()=> {fetchFileList()},[]);
-
-    const fetchFileList = async() => {
+export async function RetrieveAllVideosList(setFileList){
+    // const fetchFileList = async() => {
         try {
             // Make a GET request using the Fetch API
             const response = await fetch('http://localhost:8081');
@@ -21,9 +14,10 @@ export function RetrieveAllVideosList(setFileList){
       
             // Update the state with the fetched data
             setFileList(JSON.parse(result));
+        
           } catch (error) {
             console.error('Error fetching data:', error.message);
           }
-        };
+        // };
       
 }

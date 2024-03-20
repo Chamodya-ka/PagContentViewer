@@ -5,6 +5,7 @@ import { BrowserRouter, Routes,Route } from 'react-router-dom';
 import { Home } from './Home';
 import { Hippo } from './priorityPages/Hippo';
 import {HipposVideos} from './randomVideoPages/hipposVideos'
+import { VideoPlayer } from './VideoPlayer';
 
 function App() {
   return (
@@ -30,7 +31,9 @@ function App() {
         )}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/hippo" element={<Hippo/>}/>
-        <Route path="/hippo/videos" element={<HipposVideos/>}/>
+        <Route path="/hippo/videos" element={<VideoPlayer tvName="all"/>}/>
+        <Route path="/falcon/videos" element={<VideoPlayer tvName="falcon"/>}/>
+        <Route path="/penguin/videos" element={<VideoPlayer tvName="penguin"/>}/>
 
       </Routes>
     </BrowserRouter>
