@@ -39,7 +39,7 @@ function VideoLooper({JSONData,...props}) {
 
 function GetJSONList(props) {
     const fetcher = (...args) => fetch(...args).then(res => res.json());    
-    const { data, error, isLoading } = useSWR('http://localhost:8081', fetcher)
+    const { data, error, isLoading } = useSWR(`http://localhost:8081/?folderName=${props.tvName}`, fetcher)
     if (error) return <div>Error</div>;
     if (isLoading) return <div>Loading</div>;
     return <VideoLooper JSONData={JSON.parse(data)} {...props}/>;

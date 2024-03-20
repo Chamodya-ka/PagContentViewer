@@ -31,7 +31,7 @@ function App() {
         )}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/hippo" element={<Hippo/>}/>
-        <Route path="/hippo/videos" element={<VideoPlayer tvName="all"/>}/>
+        <Route path="/hippo/videos" element={<VideoPlayer tvName="hippo"/>}/>
         <Route path="/falcon/videos" element={<VideoPlayer tvName="falcon"/>}/>
         <Route path="/penguin/videos" element={<VideoPlayer tvName="penguin"/>}/>
 

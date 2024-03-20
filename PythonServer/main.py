@@ -2,11 +2,12 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import os  
 import threading    
 import json
+from urllib.parse import urlparse, parse_qs
 
-def get_file_list(file_path="/home/chamodyaa/Apache2/httpd-2.4.58/htdocs/resources/all"):
+def get_file_list(folderName):
+    file_path = "/home/chamodyaa/Apache2/httpd-2.4.58/htdocs/resources/" + folderName[0]
     files = os.listdir(file_path)
     dict = {str(k): str(v) for k, v in enumerate(files)}
-    print(type(dict))
     return dict
 
 class server(BaseHTTPRequestHandler):
@@ -17,11 +18,14 @@ class server(BaseHTTPRequestHandler):
         super().__init__(*args, **kwargs)
             
     def do_GET(self):
+        print(urlparse(self.path))
+        query_params = parse_qs(urlparse(self.path).query)
+        print(query_params)
         self.send_response(200, 'OK')
         self.send_header('Content-type', 'application/json')
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
-        data = json.dumps(get_file_list())
+        data = json.dumps(get_file_list(query_params['folderName']))
         json_response = json.dumps(data).encode()
         # Send the JSON response
         #print(json_response)

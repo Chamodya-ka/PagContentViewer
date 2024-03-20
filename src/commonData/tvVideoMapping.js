@@ -5,6 +5,9 @@ export const tvVideoMapping =[{
   tvName: "falcon",
   directory: "falcon"
 },{
+  tvName: "penguin",
+  directory: "penguin"
+},{
   tvName: "all",
   directory: "all"
 }
